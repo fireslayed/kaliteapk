@@ -19,21 +19,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Gradle cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: gradle-${{ hashFiles('**/*.gradle*') }}
-
-      - name: Gradle izni ver
-        run: chmod +x android-webview/gradlew
-
       - name: APK build et
         run: |
           cd android-webview
-          ./gradlew assembleRelease
+          chmod +x gradlew
+          ./gradlew assembleRelease --warning-mode=none
 
       - name: APK'yı kaydet
         uses: actions/upload-artifact@v4
@@ -41,4 +31,3 @@ jobs:
           name: Kalite-Checker-APK
           path: android-webview/app/build/outputs/apk/release/app-release*.apk
           retention-days: 30
-
