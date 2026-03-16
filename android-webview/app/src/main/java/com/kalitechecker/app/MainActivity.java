@@ -12,7 +12,7 @@ public class MainActivity extends Activity {
     private WebView webView;
     
     // Termux'ta uygulamanız hangi portta çalışıyorsa buraya yazın
-    private static final String APP_URL = "http://localhost:5000";
+    private static final String APP_URL = "http://localhost:8080";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
